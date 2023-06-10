@@ -1,0 +1,17 @@
+@startuml aaaa
+!startsub ACTORS
+actor Zalogowany_użytkownik as loggedUser
+actor Niezalogowany_użytkownik as uloggedUser
+
+actor Gracz_partii as gamePlayer
+actor Obserwator_partii as gameViewer
+
+actor Gracz_turnieju as tournamentPLayer
+actor Obserwator_turnieju as tournamentViewer
+
+actor Użytkownik as user
+
+actor Administrator as admin
+
+!endsub
+@enduml

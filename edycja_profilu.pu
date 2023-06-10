@@ -1,0 +1,15 @@
+@startuml edycja_profilu
+left to right direction
+actor Zalogowany_użytkownik as loggedUser
+rectangle Edycja_Profilu{
+    usecase "Zmień dane" as e1
+    usecase "Zmień hasło" as e2
+}
+
+
+loggedUser -- e1
+loggedUser -- e2
+
+@enduml
+
+

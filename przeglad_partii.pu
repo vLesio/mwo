@@ -1,0 +1,25 @@
+' Uruchomienie analizy komputerowej partii
+' Zapis poszczególnych analizowanych alternatywnych przebiegów partii
+' Wskazanie przez silnik kluczowych momentów partii
+' Opcja rozegrania ponownie kluczowych pozycji w celu nauki
+
+@startuml przeglad_partii
+left to right direction
+actor Zalogowany_uzytkownik as loggedUser
+actor Niezalogowany_uzytkownik as unloggedUser
+
+rectangle Przeglad_Partii{
+    usecase "Uruchomienie analizy komputerowej partii" as computerFeedback
+    usecase "Zapis poszczególnych analizowanych alternatywnych przebiegów partii" as savePartOfTheGame
+    usecase "Wskazanie przez silnik kluczowych momentów partii" as keyMoments
+    usecase "Opcja rozegrania ponownie kluczowych pozycji w celu nauki" as playAgain
+}
+
+
+unloggedUser <-- loggedUser
+unloggedUser -- computerFeedback
+loggedUser -- savePartOfTheGame
+unloggedUser -- keyMoments
+unloggedUser -- playAgain
+
+@enduml

@@ -1,0 +1,20 @@
+Co mamy?
+turnieje
+użytkownicy:
+listę znajomych
+dane osobowe
+rankingi
+historia gier
+lista pokoi
+pokój
+analiza gry
+rankingi
+lista zadań szachowych
+zadanie szachowe
+gra
+czat
+dwóch graczy
+lista emotek
+atrybuty:
+czas dwóch graczy
+tempo partii (czas początkowy i dodawany)

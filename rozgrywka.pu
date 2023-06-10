@@ -1,0 +1,28 @@
+@startuml rozgrywka
+
+left to right direction
+actor Gracz_partii as gamePlayer
+rectangle Rozgrywka{
+usecase "Wyświetl brief profilu przeciwnika" as r1
+usecase "Wyświetlenie rankingu\n i statystyk graczy partii" as r2
+usecase "Wysłanie wiadomości\n do przeciwnika" as r3
+usecase "Wysłanie emoji\n do przeciwnika" as r4
+usecase "Poddanie partii" as r5
+usecase "Zaproponowanie remisu\n przeciwnikowi" as r6
+usecase "Zapisanie wyniku i przebiegu gry\n w historii gier użytkownika" as r7
+usecase "Zaproszenie przeciwnika \ndo grona znajomych po rozgrywce" as r8
+usecase "Zaproponowanie rewanżu użytkownikowi" as r9
+}
+gamePlayer -- r1
+gamePlayer -- r3
+gamePlayer -- r4
+gamePlayer -- r5
+gamePlayer -- r6
+gamePlayer -- r8 : {zakończył partię}
+gamePlayer -- r9 : {zakończył partię}
+r1 <-- r2 : <<extends>>
+r5 --> r7 : <<include>>
+
+@enduml
+
+

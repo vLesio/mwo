@@ -1,0 +1,29 @@
+@startuml activity_key_moments
+
+|Użytkownik|
+start
+:Wybiera partię, której chce poznać kluczowe elementy;
+|System|
+if(Partia może być wczytana?) then (Tak)
+    :Wczytuje partię;
+    |Użytkownik|
+    :Wybiera opcje "Analiza partii";
+    |System|
+    if(Partia może być analizowana?) then(Tak)
+        :Analizuje partię;
+        :Wyświetla kluczowe elementy partii;
+        |Użytkownik|
+        :Przegląda kluczowe elementy partii;
+        stop
+    else(Nie)
+        :Wyświetla komunikat o tym, że partia nie może być analizowana;
+        |Użytkownik|
+        :Kontynuuje grę bez analizy;
+        end
+    endif
+else (Nie)
+    :Wyświetla komunikat o błędzie;
+    :Wraca użytkownika do wyboru partii;
+    end
+endif
+@enduml

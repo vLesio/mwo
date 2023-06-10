@@ -1,0 +1,23 @@
+@startuml logowanie
+
+actor Niezalogowany_użytkownik as uloggedUser
+
+rectangle Logowanie{
+    usecase "Zaloguj się" as l1
+    usecase "Zarejestruj się" as l2
+    usecase "Zaloguj się przez Google/Facebook" as l3
+    usecase "Poproś o zresetowanie hasła" as l4
+}
+
+
+uloggedUser -- l1
+uloggedUser -- l2
+l1 <-- l3 : <<extends>>
+l1 <-- l4 : <<extends>>
+
+actor Zalogowany_użytkownik as loggedUser
+usecase "Wyloguj się" as l5
+loggedUser -- l5
+
+
+@enduml

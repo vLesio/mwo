@@ -1,0 +1,16 @@
+@startuml nauka
+left to right direction
+actor Zalogowany_uzytkownik as loggedUser
+
+rectangle Nauka{
+    usecase "Rozwiązywanie zadań szachowych na adekwatnym rankingu" as ranking
+    usecase "Przegląd przebiegu partii teoretycznych debiutów" as gameBrief 
+    usecase "Edytor pozycji z możliwością analizy komputerowej" as positionEditor
+}
+
+
+
+loggedUser -- ranking
+loggedUser -- gameBrief
+loggedUser -- positionEditor
+@enduml

@@ -1,0 +1,31 @@
+' Wyszukiwanie profilów użytkowników
+' Wyświetlanie historii gier użytkownika
+' Zaproszenie użytkownika do grona znajomych
+' Wyświetlenie listy znajomych
+' Usunięcie znajomego z listy znajomych
+' Wyświetlenie profilu użytkownika
+' Wyświetlanie historii gier innych użytkowników
+
+@startuml spolecznosc
+left to right direction
+actor Zalogowany_uzytkownik as loggedUser
+actor Niezalogowany_uzytkownik as unloggedUser
+rectangle Spolecznosc{
+    usecase "Wyszukiwanie profilów użytkowników" as profileSearch
+    usecase "Wyświetlanie historii gier użytkownika" as gameHistory_mine
+    usecase "Wyświetlenie listy znajomych" as friendsList
+    usecase "Usunięcie znajomego z listy znajomych" as friendDelete
+    usecase "Wyświetlenie profilu użytkownika" as showProfile
+    usecase "Wyświetlenie historii gier innych użytkowników" as gameHistory
+}
+
+
+loggedUser --> unloggedUser
+unloggedUser -- profileSearch
+unloggedUser -- showProfile
+unloggedUser -- gameHistory
+loggedUser -- gameHistory_mine
+loggedUser -- friendsList
+loggedUser -- friendDelete
+
+@enduml

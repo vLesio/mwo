@@ -1,0 +1,25 @@
+' Wyświetlanie rankingu wszystkich graczy ze wszystkich kategorii
+' Sortowanie rankingu według własnych kryteriów
+' Wyzwanie na pojedynek wybranych graczy
+' Wyświetlenie profilu użytkownika
+
+@startuml ranking
+left to right direction
+actor Zalogowany_użytkownik as loggedUser
+actor Niezalogowany_użytkownik as uloggedUser
+
+rectangle Ranking{
+    usecase "Wyświetlanie rankingu wszystkich graczy ze wszystkich kategorii" as showRanking
+    usecase "Sortowanie rankingu według własnych kryteriów" as sorting
+    usecase "Wyzwanie na pojedynek wyzwanych graczy" as playerChoose
+    usecase "Wyświetlenie profilu użytkownika" as showProfile
+}
+
+
+loggedUser -- playerChoose
+uloggedUser -- showRanking
+uloggedUser -- sorting
+uloggedUser -- showProfile
+uloggedUser <|-- loggedUser
+
+@enduml

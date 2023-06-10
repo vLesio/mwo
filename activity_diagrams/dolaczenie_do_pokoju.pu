@@ -1,0 +1,41 @@
+@startuml activity_dolaczenie_do_pokoju
+|Użytkownik|
+start
+:Wybiera pokój meczowy do dołączenia;
+|System|
+:Wyświetla użytkownikowi szczegóły pokoju oraz przyciski do dołączenia i rezygnacji z dołączenia;
+|Użytkownik|
+if(Wybrał dołączenie?) then (Tak)
+    |System|
+    if(Pokój jest pełny?) then (Tak)
+        :Wyświetla komunikat o tym, że pokój jest pełny;
+        :Przekierowuje użytkownika do listy pokojów;
+        end
+    else (Nie)
+        :Dodaje użytkownika do pokoju;
+        :Informuje innych użytkowników o dołączeniu nowego użytkownika;
+        |Użytkownik|
+        :Przegląda ustawienia gry;
+        while(Proponuje zmiany w ustawieniach?) is (True)
+         |System|
+         :Pyta użytkowników o zatwierdzenie zmiań;
+         if(Większość zatwierdziła?) then (Tak)
+            |System|
+            :Zmienia ustawienia gry;
+            :Informuje użytkownikow o zmianie ustawień;
+        else (Nie)
+            |System|
+            :Informuje o braku zmian;
+        endif
+        endwhile (False)
+        |Użytkownik|
+        :Czeka na rozpoczęcie meczu;
+        stop
+    endif
+else (Nie)
+    |System|
+    :Przekierowuje użytkownika do listy pokojów;
+    end
+endif
+
+@enduml

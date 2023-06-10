@@ -1,0 +1,121 @@
+@startuml class_diagram
+
+' TODO:
+'   a) stworzenie związków między klasami
+'   b) dodanie diagramów aktywności do pliku
+'   c) stworzenie 2-3 diagramów sekwencyjnych
+'   d) stworzenie diagramów stanów
+'   e) dodanie diagramów stanów
+'   
+
+struct UserData {
+    +String firstName
+    +String lastName
+    +String nickname
+    +String emailAddress
+}
+
+struct Message {
+    +User creator
+    +String content
+    +Date date
+}
+
+' struct UserStatistic<T> {
+'     +String statName
+'     +T statValue
+' }
+
+enum GameType {
+    bullet
+    blitz
+    rapid
+    classical
+}
+
+class ChessPuzzle {
+    -Int puzzleRating
+    -String startingPosition
+    -List<String> correctMoves
+    -List<String> computerMoves
+    +void loadPlayerMove()
+    +void addPoints()
+    +void subtractPoints()
+}
+
+' wczytaj ruch gracza (jeśli dobry wykonaj kolejny ruch)
+
+struct GameSettings {
+    +GameType gameType
+    +boolean isRated
+    +boolean isTimeOverWritten
+    +int overWriteTime
+}
+
+class User {
+    +UserData userData
+     ' -UserStatistic[] userStatistics
+    +String userID
+    +Date accountCreatedTime
+    +User[] friends
+}
+
+class Chat {
+    -String chatID
+    -String chatName
+    -Message[] messages
+    -User[] participants
+    +void sendMessage(Message)
+    +Message[] getMessages(int)
+}
+class Leaderboard {
+    -String id
+    -String name
+    -String description
+    -Map<User, int> ranking
+    +User[] getTopPlayers(int, int)
+    +User[] getPlayersAroundUser(User, int)
+    +int getPlayerRanking(User)
+}
+
+class Game {
+    -String id
+    -User whitePlayer
+    -User blackPlayer
+    -GameSettings gameSettings
+    -Date createdTime
+    -Date startTime
+    -Date endTime
+    +void startGame()
+    +void endGame()
+}
+note top: TODO: Dodać abstract i dziedziczenie
+
+class Tournament{
+    -String id
+    -String description
+    -Int numberOfParticipants
+    -Date createdTime
+    -Date startTime
+    -Date endTime
+    -User tournamentHolder
+    -User[] participants
+    -Game[] listOfGames
+}
+
+GameSettings ..> GameType
+Game ..> GameSettings
+
+Chat ..|> Message : use
+Chat "1" --o "*" User
+
+User ..> UserData : use
+
+Game "1" --o "2" User
+
+Leaderboard "1" --o "*" User : aggregation
+
+Tournament "1" --o "*" User
+Tournament "1" --o "*" Game
+
+@enduml

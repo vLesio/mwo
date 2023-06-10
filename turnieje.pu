@@ -1,0 +1,29 @@
+@startuml Turnieje
+left to right direction
+actor Zalogowany_użytkownik as loggedUser
+
+rectangle Turnieje {
+usecase "Stworzenie turnieju" as tournamentCreation
+usecase "Zamknięcie turnieju" as tournamentClosing
+usecase "Zmiana ustawień turnieju" as tournamentSettingsEdition
+usecase "Edycja informacji o turnieju" as tournamentInfoEdition
+usecase "Przeglądanie dostępnych turniejów" as tournamentSearching
+usecase "Filtrowanie turniejów" as tournamentFiltering
+usecase "Wyświetlanie stanu turnieju" as tournamentStatusShowing
+usecase "Dołączanie do turnieju" as tournamentJoining
+usecase "Rezygnacja z turnieju" as tournamentRezignating
+usecase "Dołączanie do meczu turniejowego" as tournamentMatchJoining
+}
+
+loggedUser -- tournamentCreation
+loggedUser -- tournamentClosing : {zarządza turniejem}
+loggedUser -- tournamentSettingsEdition : {zarządza turniejem}
+loggedUser -- tournamentInfoEdition : {zarządza turniejem}
+loggedUser -- tournamentSearching
+loggedUser -- tournamentFiltering
+loggedUser -- tournamentStatusShowing
+loggedUser -- tournamentJoining
+loggedUser -- tournamentRezignating : {dołączył do turnieju}
+loggedUser -- tournamentMatchJoining : {ma dostępny mecz}
+
+@enduml

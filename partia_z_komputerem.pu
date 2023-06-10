@@ -1,0 +1,18 @@
+@startuml partia_z_komputerem
+left to right direction
+actor Zalogowany_uzytkownik as loggedUser
+actor Niezalogowany_uzytkownik as unloggedUser
+
+rectangle Partia_Z_Komputerem{
+    usecase "Wybor poziomu trudnosci" as l4
+    usecase "Zapisanie stanu gry" as l2
+    usecase "Wczytanie zapisanej gry" as l3
+}
+
+
+unloggedUser <-- loggedUser
+loggedUser -- l2
+loggedUser -- l3
+unloggedUser -- l4
+
+@enduml

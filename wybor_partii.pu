@@ -1,0 +1,30 @@
+@startuml nauka
+left to right direction
+actor Zalogowany_użytkownik as loggedUser
+actor Niezalogowany_użytkownik as uloggedUser
+
+rectangle Wybor_Partii{
+    usecase "Stworzenie gry z komputerem" as createComputerGame
+    usecase "Stworzenie pokoju meczowego" as createGameRoom
+    usecase "Przeglądanie dostępnych pokojów meczowych" as gameRoomList
+    usecase "Dołączenie do pokoju w celu gry" as joinGameRoomAsPlayer
+    usecase "Dołączenie do pokoju w celu obserwacji" as joinGameRoomAsViewer
+    usecase "Szybkie wyszukiwanie graczy do gry (MM)" as quickMatch
+    usecase "Zaproszenie znajomego do partii" as inviteFriendToGame
+    usecase "Wybór trybu gry (np. błyskawiczna, szybka, klasyczna)" as gameMode
+}
+
+
+loggedUser -- createGameRoom
+loggedUser -- joinGameRoomAsPlayer
+loggedUser -- quickMatch
+loggedUser -- inviteFriendToGame
+
+uloggedUser -- gameRoomList
+uloggedUser -- joinGameRoomAsViewer
+uloggedUser -- gameMode
+uloggedUser -- createComputerGame
+
+uloggedUser <|-- loggedUser
+
+@enduml
